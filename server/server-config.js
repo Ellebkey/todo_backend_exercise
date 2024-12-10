@@ -4,6 +4,7 @@ const https = require('https');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todos.routes');
+const orgRoutes = require('./routes/organizations.routes');
 const authRoutes = require('./routes/auth.route');
 
 const app = express();
@@ -14,8 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Routes
-app.use('/api/todos', todoRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/todos', todoRoutes);
+app.use('/api/organizations', orgRoutes);
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
